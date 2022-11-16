@@ -8,3 +8,5 @@ DOMAIN,adimg.uve.weibo.com
 # baidu
 DOMAIN,hm.baidu.com
 DOMAIN,hmma.baidu.com
+#QQ
+DOMAIN,stun.qqlive.qq.com
