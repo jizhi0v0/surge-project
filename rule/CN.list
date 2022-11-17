@@ -1,4 +1,11 @@
 DOMAIN,sdk.open.extension.getui.com
+# QQ
 USER-AGENT,QQ*
 DOMAIN-SUFFIX,qq.com
+
+# baidu
 DOMAIN-KEYWORD,tieba
+
+# eleme
+DOMAIN-KEYWORD,ele.me
+DOMAIN-KEYWORD,eleme

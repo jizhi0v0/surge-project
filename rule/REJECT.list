@@ -1,15 +1,23 @@
 # dingtalk
 DOMAIN,pnsfeedback.dingtalk.com
+
 # track
 DOMAIN,api.mixpanel.com
 DOMAIN,sessions.bugsnag.com
+
 # weibo
 DOMAIN,adimg.uve.weibo.com
+
 # baidu
 DOMAIN,hm.baidu.com
 DOMAIN,hmma.baidu.com
+
 # HuaWei cloud
 DOMAIN-KEYWORD,124.70.87.
 DOMAIN-KEYWORD,122.9.126.
+
+# alibaba
+DOMAIN-KEYWORD,alibabachengdun.com
+
 # QQ
 DOMAIN,stun.qqlive.qq.com
