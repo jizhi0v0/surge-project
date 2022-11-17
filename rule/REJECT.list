@@ -9,7 +9,7 @@ DOMAIN,adimg.uve.weibo.com
 DOMAIN,hm.baidu.com
 DOMAIN,hmma.baidu.com
 # HuaWei cloud
-IP-CIDR,124.70.87.2,no-resolve
-IP-CIDR,122.9.126.21,no-resolve
+DOMAIN-KEYWORD,124.70.87.
+DOMAIN-KEYWORD,122.9.126.
 # QQ
 DOMAIN,stun.qqlive.qq.com
