@@ -37,9 +37,8 @@ DOMAIN,hfapp-api.qweather.net
 DOMAIN-KEYWORD,hefeng
 
 # weibo
-DOMAIN-SUFFIX,weibo.com
-DOMAIN-SUFFIX,weibo.cn
+DOMAIN-KEYWORD,weibo
 
 # meituan
-DOMAIN-KEYWORD,sankuai.com
-DOMAIN-KEYWORD,meituan.com
+DOMAIN-KEYWORD,sankuai
+DOMAIN-KEYWORD,meituan
