@@ -17,7 +17,7 @@ USER-AGENT,%E6%89%8B%E6%9C%BA%E6%B7%98%E5%AE%9D* // 手机淘宝 urlencode
 USER-AGENT,%E6%B7%98%E5%AE%9D* // 淘宝 urlencode
 
 # dingtalk
-DOMAIN-SUFFIX,dingtalk
+DOMAIN-SUFFIX,dingtalk.com
 
 # China
 DOMAIN-SUFFIX,CN
