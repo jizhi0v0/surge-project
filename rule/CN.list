@@ -32,10 +32,14 @@ DOMAIN-KEYWORD,baidu
 DOMAIN-KEYWORD,ele.me
 DOMAIN-KEYWORD,eleme
 
-# 和风天气
+# hefeng weather
 DOMAIN,hfapp-api.qweather.net
 DOMAIN-KEYWORD,hefeng
 
 # weibo
 DOMAIN-SUFFIX,weibo.com
 DOMAIN-SUFFIX,weibo.cn
+
+# meituan
+DOMAIN-KEYWORD,sankuai.com
+DOMAIN-KEYWORD,meituan.com
