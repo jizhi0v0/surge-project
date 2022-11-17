@@ -21,3 +21,9 @@ DOMAIN-KEYWORD,alibabachengdun.com
 
 # QQ
 DOMAIN,stun.qqlive.qq.com
+
+# 友盟
+DOMAIN,ulogs.umeng.com
+
+# 字节跳动
+DOMAIN-KEYWORD,zijieapi
