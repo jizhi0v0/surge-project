@@ -1,4 +1,5 @@
 DOMAIN,sdk.open.extension.getui.com
+
 # QQ
 USER-AGENT,QQ*
 DOMAIN-SUFFIX,qq.com
