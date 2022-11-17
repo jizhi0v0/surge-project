@@ -7,3 +7,5 @@ DOMAIN,sessions.bugsnag.com
 DOMAIN,adimg.uve.weibo.com
 # baidu
 DOMAIN,hm.baidu.com
+# HuaWei cloud
+IP-CIDR,124.70.87.2,no-resolve
