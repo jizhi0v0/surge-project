@@ -10,5 +10,6 @@ DOMAIN,hm.baidu.com
 DOMAIN,hmma.baidu.com
 # HuaWei cloud
 IP-CIDR,124.70.87.2,no-resolve
+IP-CIDR,122.9.126.21,no-resolve
 # QQ
 DOMAIN,stun.qqlive.qq.com
