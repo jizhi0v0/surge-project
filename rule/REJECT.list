@@ -1,5 +1,7 @@
-# dingtalk
+# ali
 DOMAIN,pnsfeedback.dingtalk.com
+DOMAIN,dualstack-logs.amap.com
+DOMAIN,loggw-ex.alipay.com
 
 # track
 DOMAIN,api.mixpanel.com
