@@ -48,3 +48,10 @@ DOMAIN-KEYWORD,weibo
 # meituan
 DOMAIN-KEYWORD,sankuai
 DOMAIN-KEYWORD,meituan
+
+# amazone cn
+DOMAIN-KEYWORD,amazonaws.com.cn // s3.cn-north-1.amazonaws.com.cn amazone beijing
+DOMAIN-KEYWORD,amazonaws.cn
+
+# aqara home
+DOMAIN-KEYWORD,aqara

@@ -6,6 +6,7 @@ DOMAIN,loggw-ex.alipay.com
 # track
 DOMAIN,api.mixpanel.com
 DOMAIN,sessions.bugsnag.com
+DOMAIN,ios.bugly.qq.com
 
 # weibo
 DOMAIN,adimg.uve.weibo.com
