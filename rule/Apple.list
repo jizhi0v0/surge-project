@@ -1,5 +1,4 @@
 DOMAIN,apps.apple.com
-DOMAIN,dispatcher.is.autonavi.com // 高德
 DOMAIN-SUFFIX,cdn-apple.com
 DOMAIN-SUFFIX,mzstatic.com // App Store & iTunes Images
 DOMAIN-SUFFIX,aaplimg.com
