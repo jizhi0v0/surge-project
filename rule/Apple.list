@@ -11,6 +11,7 @@ DOMAIN-SUFFIX,itunes.com
 DOMAIN-SUFFIX,itunes.apple.com
 DOMAIN-SUFFIX,lookup-api.apple.com // Dictionary
 DOMAIN-SUFFIX,me.com
+DOMAIN,www-mail.icloud-sandbox.com // icloud mail websit
 PROCESS-NAME,storedownloadd // Mac App Store
 USER-AGENT,com.apple.appstored* // iOS App Store
 DOMAIN,17.57.145.170
