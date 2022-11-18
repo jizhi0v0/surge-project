@@ -31,10 +31,6 @@ DOMAIN,ulogs.umeng.com
 # 字节跳动
 DOMAIN-KEYWORD,zijieapi
 
-# Unknown
-DOMAIN,batch-rgeo.is.autonavi.com
-DOMAIN,spatialsearch.is.autonavi.com
-
 # weibo
 DOMAIN,h5.sinaimg.cn
 DOMAIN,dp.im.weibo.cn
