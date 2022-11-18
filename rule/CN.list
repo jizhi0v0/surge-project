@@ -3,6 +3,9 @@ USER-AGENT,MicroMessenger Client
 USER-AGENT,WeChat*
 USER-AGENT,MApi* // Dianping
 
+# Apple
+DOMAIN-KEYWORD,smp-device.apple.com // Apple add card service
+
 # Ali
 DOMAIN-KEYWORD,alipay
 DOMAIN-KEYWORD,aliapp
