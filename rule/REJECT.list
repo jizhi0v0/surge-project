@@ -32,10 +32,14 @@ DOMAIN,ulogs.umeng.com
 DOMAIN-KEYWORD,zijieapi
 
 # weibo
-DOMAIN,h5.sinaimg.cn
+# DOMAIN,h5.sinaimg.cn // weibo h5 mobile website, if u need access 'm.weibo.cn'
 DOMAIN,dp.im.weibo.cn
 DOMAIN,gw.im.weibo.cn
 DOMAIN,gw1.im.weibo.cn
 DOMAIN-SUFFIX,biz.weibo.com
 DOMAIN-SUFFIX,sdkapp.uve.weibo.com
 DOMAIN-SUFFIX,ip.taobao.com
+
+# Unknown
+IP-CIDR,112.39.0.0/16,no-resolve // from tg 
+IP-CIDR,112.103.0.0/16,no-resolve // from tg 
