@@ -19,6 +19,9 @@ DOMAIN,afdconf.baidu.com
 DOMAIN,adsmind.ugdtimg.com
 DOMAIN,tb-video.bdstatic.com
 DOMAIN,bdbus-turbonet.baidu.com
+DOMAIN,feed-image.baidu.com
+DOMAIN,als.baidu.com
+DOMAIN,tcbox.baidu.com
 URL-REGEX,http://c.tieba.baidu.com/c/e/meme/getAllMeme
 
 # HuaWei cloud
@@ -30,6 +33,7 @@ DOMAIN-KEYWORD,alibabachengdun.com
 
 # QQ
 DOMAIN,stun.qqlive.qq.com
+DOMAIN,sdk.e.qq.com
 
 # 友盟
 DOMAIN,ulogs.umeng.com
