@@ -21,18 +21,6 @@ DOMAIN,tb-video.bdstatic.com
 DOMAIN,bdbus-turbonet.baidu.com
 URL-REGEX,http://c.tieba.baidu.com/c/e/meme/getAllMeme
 
-nadvideo.baidu.com^
-||aod-image.baidu.com^
-||tieba.baidu.com/mo/q^
-||c.tieba.baidu.com/c/e/meme/getAllMeme
-||c.tieba.baidu.com/c/f/forum/getAdInfo
-||static.52zzyx.com^
-||pg-ad-b1.ws.126.net^
-||h5.analytics.126.net^
-||nex.163.com^
-||b3.jandan.net^
-||a3.jandan.net^
-
 # HuaWei cloud
 DOMAIN-KEYWORD,124.70.87.
 DOMAIN-KEYWORD,122.9.126.
