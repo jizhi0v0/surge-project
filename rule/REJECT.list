@@ -22,6 +22,7 @@ DOMAIN,bdbus-turbonet.baidu.com
 DOMAIN,feed-image.baidu.com
 DOMAIN,als.baidu.com
 DOMAIN,tcbox.baidu.com
+DOMAIN,fclog.baidu.com
 URL-REGEX,http://c.tieba.baidu.com/c/e/meme/getAllMeme
 
 # HuaWei cloud
