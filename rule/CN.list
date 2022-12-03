@@ -5,6 +5,10 @@ USER-AGENT,MApi* // Dianping
 
 # Apple
 DOMAIN-KEYWORD,smp-device // Apple add card service
+DOMAIN,cn-smp-paymentservices.apple.com apple-pay china
+
+# jd
+DOMAIN,dgstatic.jd.com
 
 # Ali
 DOMAIN-KEYWORD,alipay

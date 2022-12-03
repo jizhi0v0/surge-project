@@ -38,6 +38,7 @@ DOMAIN,sdk.e.qq.com
 
 # 友盟
 DOMAIN,ulogs.umeng.com
+DOMAIN,ulogs.umengcloud.com
 
 # 字节跳动
 DOMAIN-KEYWORD,zijieapi
