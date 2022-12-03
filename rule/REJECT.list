@@ -9,6 +9,10 @@ DOMAIN,api.mixpanel.com
 DOMAIN,sessions.bugsnag.com
 DOMAIN,ios.bugly.qq.com
 
+# google ad
+DOMAIN-KEYWORD,adservice.google.com
+DOMAIN-KEYWORD,googleadservices
+
 # weibo
 DOMAIN,adimg.uve.weibo.com
 
