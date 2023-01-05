@@ -7,6 +7,9 @@ USER-AGENT,MApi* // Dianping
 DOMAIN-KEYWORD,smp-device // Apple add card service
 DOMAIN,cn-smp-paymentservices.apple.com // apple-pay china
 
+# taobao
+DOMAIN-KEYWORD,mmstat
+
 # jd
 DOMAIN,dgstatic.jd.com
 
