@@ -34,6 +34,7 @@ DOMAIN-SUFFIX,dingtalk.com
 
 # China
 DOMAIN-SUFFIX,CN
+DOMAIN-SUFFIX,cn
 
 # Unknown
 DOMAIN,sdk.open.extension.getui.com
