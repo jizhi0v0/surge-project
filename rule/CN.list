@@ -8,7 +8,25 @@ DOMAIN-KEYWORD,smp-device // Apple add card service
 DOMAIN,cn-smp-paymentservices.apple.com // apple-pay china
 
 # wechat
-# DOMAIN-KEYWORD,dns.weixin.qq.com
+DOMAIN,dns.weixin.qq.com
+DOMAIN,snsvideo.c2c.wechat.com
+DOMAIN,socwxsns.video.qq.com
+DOMAIN,wxapp.tc.qq.com
+DOMAIN,socwxsns.video.qq.com
+DOMAIN,hkshort.weixin.qq.com 
+DOMAIN,hkaxshort.weixin.qq.com 
+DOMAIN,hkextshort.weixin.qq.com 
+DOMAIN,hkdisas.weixin.qq.com 
+DOMAIN,hkshort6.weixin.qq.com 
+DOMAIN,hkshort.pay.weixin.qq.com 
+DOMAIN,hklong.weixin.qq.com 
+DOMAIN,hkminorshort.weixin.qq.com 
+DOMAIN,hkquic.weixin.qq.com 
+DOMAIN,sgshort.pay.wechat.com 
+DOMAIN,sglong.wechat.com 
+DOMAIN,sgminorshort.wechat.com 
+DOMAIN,sgshort.wechat.com 
+DOMAIN,sgaxshort.wechat.com 
 
 # taobao
 DOMAIN-KEYWORD,mmstat
