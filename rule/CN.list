@@ -26,7 +26,8 @@ DOMAIN,sgshort.pay.wechat.com
 DOMAIN,sglong.wechat.com 
 DOMAIN,sgminorshort.wechat.com 
 DOMAIN,sgshort.wechat.com 
-DOMAIN,sgaxshort.wechat.com 
+DOMAIN,sgaxshort.wechat.com
+DOMAIN,mmhead.c2c.wechat.com
 
 # taobao
 DOMAIN-KEYWORD,mmstat
