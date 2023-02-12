@@ -4,6 +4,9 @@ DOMAIN,h-adashx.dingtalkapps.com
 DOMAIN,dualstack-logs.amap.com
 DOMAIN,loggw-ex.alipay.com
 
+# taobao
+DOMAIN,adashbc.ut.taobao.com
+
 # track
 DOMAIN,api.mixpanel.com
 DOMAIN,sessions.bugsnag.com
@@ -21,11 +24,11 @@ DOMAIN,hm.baidu.com
 DOMAIN,hmma.baidu.com
 DOMAIN,afdconf.baidu.com
 DOMAIN,adsmind.ugdtimg.com
-DOMAIN,feed-image.baidu.com
-DOMAIN,als.baidu.com
-DOMAIN,tcbox.baidu.com
-DOMAIN,fclog.baidu.com
-URL-REGEX,http://c.tieba.baidu.com/c/e/meme/getAllMeme
+#DOMAIN,feed-image.baidu.com
+#DOMAIN,als.baidu.com
+#DOMAIN,tcbox.baidu.com
+#DOMAIN,fclog.baidu.com
+
 
 # HuaWei cloud
 DOMAIN-KEYWORD,124.70.87.
