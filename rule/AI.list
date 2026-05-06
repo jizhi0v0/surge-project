@@ -1,0 +1,176 @@
+# Generative AI services
+# Sources cross-checked with HotKids GenAI, Sukka ai.conf, blackmatrix7 AI provider lists,
+# and vendor documentation where available. Apple Intelligence stays in Apple rules.
+
+# OpenAI / ChatGPT / Sora
+DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,chatgpt.com
+DOMAIN-SUFFIX,chat.com
+DOMAIN-SUFFIX,ai.com
+DOMAIN-SUFFIX,sora.com
+DOMAIN-SUFFIX,oaistatic.com
+DOMAIN-SUFFIX,oaiusercontent.com
+DOMAIN-SUFFIX,openaimerge.com
+DOMAIN-SUFFIX,openaiapi-site.azureedge.net
+DOMAIN-SUFFIX,openaicom.imgix.net
+DOMAIN,openai.com.cdn.cloudflare.net
+DOMAIN,chat.openai.com.cdn.cloudflare.net
+DOMAIN,openaiapi-site.azureedge.net
+DOMAIN,openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
+DOMAIN,openaicomproductionae4b.blob.core.windows.net
+DOMAIN,production-openaicom-storage.azureedge.net
+DOMAIN,openai-api.arkoselabs.com
+DOMAIN-SUFFIX,client-api.arkoselabs.com
+DOMAIN-SUFFIX,livekit.cloud
+DOMAIN-KEYWORD,openai
+DOMAIN-KEYWORD,openaiapi
+DOMAIN-KEYWORD,openaicom
+AND,((DOMAIN-KEYWORD,openaicom-api-), (DOMAIN-SUFFIX,azurefd.net))
+AND,((DOMAIN-KEYWORD,chatgpt-async-webps-prod-), (DOMAIN-SUFFIX,webpubsub.azure.com))
+
+# OpenAI auth, feature flag, voice, and support dependencies
+DOMAIN-SUFFIX,featuregates.org
+DOMAIN-SUFFIX,featureassets.org
+DOMAIN-SUFFIX,statsig.com
+DOMAIN-SUFFIX,statsigapi.net
+DOMAIN,api.statsig.com
+DOMAIN,events.statsigapi.net
+DOMAIN-SUFFIX,intercom.io
+DOMAIN-SUFFIX,intercomcdn.com
+DOMAIN,api-iam.intercom.io
+DOMAIN-SUFFIX,workos.com
+DOMAIN-SUFFIX,workoscdn.com
+DOMAIN,js.stripe.com
+DOMAIN,challenges.cloudflare.com
+DOMAIN,o207216.ingest.sentry.io
+DOMAIN,o33249.ingest.sentry.io
+DOMAIN-SUFFIX,sentry.io
+DOMAIN,browser-intake-datadoghq.com
+DOMAIN,rum.browser-intake-datadoghq.com
+DOMAIN-SUFFIX,launchdarkly.com
+DOMAIN-SUFFIX,prodregistryv2.org
+DOMAIN-SUFFIX,ct.sendgrid.net
+
+# Anthropic / Claude
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,claude.com
+DOMAIN-SUFFIX,clau.de
+DOMAIN-SUFFIX,claudemcpclient.com
+DOMAIN-SUFFIX,claudeusercontent.com
+DOMAIN,servd-anthropic-website.b-cdn.net
+DOMAIN,anthropic.com.cdn.cloudflare.net
+DOMAIN,anthropic.auth0.com
+DOMAIN,anthropic-com.ghost.io
+DOMAIN,cdn.usefathom.com
+IP-CIDR,160.79.104.0/21,no-resolve
+IP-CIDR6,2607:6bc0::/32,no-resolve
+IP-ASN,399358,no-resolve
+
+# Google AI / Gemini / NotebookLM / Jules
+DOMAIN-SUFFIX,generativeai.google
+DOMAIN-SUFFIX,makersuite.google.com
+DOMAIN-SUFFIX,aistudio.google.com
+DOMAIN,alkalicore-pa.clients6.google.com
+DOMAIN,alkalimakersuite-pa.clients6.google.com
+DOMAIN,aida.googleapis.com
+DOMAIN-SUFFIX,deepmind.com
+DOMAIN-SUFFIX,deepmind.google
+DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
+DOMAIN-SUFFIX,geller-pa.googleapis.com
+DOMAIN-SUFFIX,generativelanguage.googleapis.com
+DOMAIN,ai.google.dev
+DOMAIN-SUFFIX,bard.google.com
+DOMAIN-SUFFIX,gemini.google.com
+DOMAIN-SUFFIX,gemini.google
+DOMAIN-SUFFIX,notebooklm.google
+DOMAIN-SUFFIX,notebooklm.google.com
+DOMAIN-KEYWORD,notebooklm.google
+DOMAIN-KEYWORD,labs.google
+DOMAIN,antigravity.google
+DOMAIN,antigravity-unleash.goog
+DOMAIN,jules.google.com
+DOMAIN-SUFFIX,jules.google
+DOMAIN,daily-cloudcode-pa.googleapis.com
+DOMAIN,robinfrontend-pa.googleapis.com
+DOMAIN-SUFFIX,cloudcode-pa.googleapis.com
+DOMAIN,aisandbox-pa.googleapis.com
+DOMAIN-SUFFIX,g.ai
+URL-REGEX,https://www\.google\.com/.*continue=https://gemini\.google\.com.+
+
+# Cloudflare AI Gateway
+DOMAIN,gateway.ai.cloudflare.com
+
+# Cursor
+DOMAIN-SUFFIX,cursor.com
+DOMAIN-SUFFIX,cursor.sh
+DOMAIN-SUFFIX,cursorapi.com
+DOMAIN-SUFFIX,cursor-cdn.com
+
+# JetBrains AI / Grazie
+DOMAIN,api.jetbrains.ai
+DOMAIN-SUFFIX,jetbrains.ai
+DOMAIN-SUFFIX,grazie.ai
+DOMAIN-SUFFIX,grazie.aws.intellij.net
+
+# Microsoft Copilot / GitHub Copilot
+DOMAIN,copilot.microsoft.com
+DOMAIN,sydney.bing.com
+DOMAIN,www.bing.com
+DOMAIN,r.bing.com
+DOMAIN,services.bingapis.com
+DOMAIN,gateway.bingviz.microsoft.net
+DOMAIN,gateway.bingviz.microsoftapp.net
+DOMAIN-SUFFIX,edgeservices.bing.com
+DOMAIN-SUFFIX,bing-shopping.microsoft-falcon.io
+DOMAIN-SUFFIX,api.microsoftapp.net
+DOMAIN,api.msn.com
+DOMAIN,assets.msn.com
+DOMAIN,odc.officeapps.live.com
+DOMAIN,in.appcenter.ms
+DOMAIN,location.microsoft.com
+DOMAIN-SUFFIX,githubcopilot.com
+DOMAIN,copilot-proxy.githubusercontent.com
+DOMAIN,copilot-telemetry.githubusercontent.com
+DOMAIN,origin-tracker.githubusercontent.com
+DOMAIN,default.exp-tas.com
+DOMAIN,collector.github.com
+DOMAIN,api.github.com
+
+# Meta AI
+DOMAIN-SUFFIX,meta.ai
+DOMAIN,imagine.meta.com
+
+# DeepSeek
+DOMAIN-SUFFIX,deepseek.com
+
+# Mistral AI
+DOMAIN-SUFFIX,mistral.ai
+
+# Groq
+DOMAIN-SUFFIX,groq.com
+
+# Perplexity
+DOMAIN-SUFFIX,perplexity.ai
+DOMAIN-SUFFIX,pplx.ai
+DOMAIN,pplx-res.cloudinary.com
+
+# xAI / Grok
+DOMAIN-SUFFIX,x.ai
+DOMAIN-SUFFIX,grok.com
+DOMAIN-SUFFIX,grokipedia.com
+
+# AI platforms and tools
+DOMAIN-SUFFIX,poe.com
+DOMAIN-SUFFIX,openrouter.ai
+DOMAIN-SUFFIX,dify.ai
+DOMAIN-SUFFIX,openart.ai
+DOMAIN-SUFFIX,jasper.ai
+DOMAIN-SUFFIX,clipdrop.co
+DOMAIN-SUFFIX,civitai.com
+
+# ByteDance overseas AI products
+DOMAIN-SUFFIX,dola.com
+DOMAIN-SUFFIX,cici.com
+DOMAIN-SUFFIX,ciciai.com
+DOMAIN-SUFFIX,ciciaicdn.com
