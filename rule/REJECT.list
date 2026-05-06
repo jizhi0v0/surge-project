@@ -1,6 +1,7 @@
 # ali
 DOMAIN,pnsfeedback.dingtalk.com
 DOMAIN,h-adashx.dingtalkapps.com
+DOMAIN-KEYWORD,h-adashx
 DOMAIN,dualstack-logs.amap.com
 DOMAIN,loggw-ex.alipay.com
 
@@ -11,6 +12,25 @@ DOMAIN,adashbc.ut.taobao.com
 DOMAIN,api.mixpanel.com
 DOMAIN,sessions.bugsnag.com
 DOMAIN,ios.bugly.qq.com
+DOMAIN,browser-intake-us5-datadoghq.com
+DOMAIN,http-intake.logs.us5.datadoghq.com
+DOMAIN-SUFFIX,posthog.com
+DOMAIN-KEYWORD,posthog-ingress
+DOMAIN-SUFFIX,segment.com
+DOMAIN-SUFFIX,segment.io
+DOMAIN-SUFFIX,amplitude.com
+DOMAIN,insights-collector.newrelic.com
+DOMAIN,js-agent.newrelic.com
+DOMAIN-SUFFIX,nr-data.net
+DOMAIN-SUFFIX,google-analytics.com
+DOMAIN-SUFFIX,cloudflareinsights.com
+DOMAIN-SUFFIX,doubleclick.net
+DOMAIN-SUFFIX,qualified.com
+DOMAIN-SUFFIX,6sense.com
+DOMAIN-SUFFIX,clearbit.com
+DOMAIN-SUFFIX,abtasty.com
+DOMAIN-SUFFIX,onetrust.com
+DOMAIN-SUFFIX,cookielaw.org
 
 # google ad
 DOMAIN-KEYWORD,adservice.google.com
@@ -35,11 +55,13 @@ DOMAIN-KEYWORD,124.70.87.
 DOMAIN-KEYWORD,122.9.126.
 
 # alibaba
-DOMAIN-KEYWORD,alibabachengdun.com
+# DOMAIN-KEYWORD,alibabachengdun.com // Alibaba risk-control, may affect login/payment checks
 
 # QQ
 DOMAIN,stun.qqlive.qq.com
 DOMAIN,sdk.e.qq.com
+DOMAIN,otheve.beacon.qq.com
+DOMAIN,app-analytics-services.com
 
 # 友盟
 DOMAIN,ulogs.umeng.com
@@ -50,13 +72,13 @@ DOMAIN-KEYWORD,zijieapi
 
 # weibo
 # DOMAIN,h5.sinaimg.cn // weibo h5 mobile website, if u need access 'm.weibo.cn'
-DOMAIN,dp.im.weibo.cn
-DOMAIN,gw.im.weibo.cn
-DOMAIN,gw1.im.weibo.cn
+# DOMAIN,dp.im.weibo.cn // Weibo IM gateway
+# DOMAIN,gw.im.weibo.cn // Weibo IM gateway
+# DOMAIN,gw1.im.weibo.cn // Weibo IM gateway
 DOMAIN-SUFFIX,biz.weibo.com
 DOMAIN-SUFFIX,sdkapp.uve.weibo.com
-DOMAIN-SUFFIX,ip.taobao.com
+# DOMAIN-SUFFIX,ip.taobao.com // IP geolocation service, may affect location features
 
 # Unknown
-IP-CIDR,112.39.0.0/16,no-resolve // from tg 
-IP-CIDR,112.103.0.0/16,no-resolve // from tg 
+# IP-CIDR,112.39.0.0/16,no-resolve // from tg, too broad for default reject
+# IP-CIDR,112.103.0.0/16,no-resolve // from tg, too broad for default reject
