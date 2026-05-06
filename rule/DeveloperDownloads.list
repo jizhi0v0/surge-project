@@ -1,0 +1,18 @@
+# Developer tool downloads and static resources.
+# Keep Docker registry endpoints out for now; they are less reliable to direct-route in mainland China.
+
+# VS Code / Microsoft developer assets
+DOMAIN-SUFFIX,vsassets.io
+DOMAIN-SUFFIX,vscode-cdn.net
+DOMAIN-SUFFIX,visualstudio.com
+DOMAIN-SUFFIX,download.visualstudio.microsoft.com
+
+# JetBrains downloads and package assets
+DOMAIN,download.jetbrains.com
+DOMAIN-SUFFIX,download.jetbrains.com
+DOMAIN-SUFFIX,download-cdn.jetbrains.com
+
+# Postman downloads and static resources
+DOMAIN-SUFFIX,postman.com
+DOMAIN-SUFFIX,pstmn.io
+DOMAIN-SUFFIX,getpostman.com
