@@ -54,6 +54,19 @@ DOMAIN-KEYWORD,autonavi // apple weather app city search
 # dingtalk
 DOMAIN-SUFFIX,dingtalk.com
 
+# ByteDance / Volcengine
+DOMAIN-SUFFIX,bytedance.com
+DOMAIN-SUFFIX,byted.org
+DOMAIN-SUFFIX,bytetcc.com
+DOMAIN-SUFFIX,ibytedapm.com
+DOMAIN-SUFFIX,volcengine.com
+DOMAIN-SUFFIX,volccdn.com
+DOMAIN-SUFFIX,volces.com
+DOMAIN-SUFFIX,gcloudcache.com
+DOMAIN-SUFFIX,zijieapi.com
+DOMAIN-KEYWORD,douyin
+DOMAIN-KEYWORD,webshowlive-volc
+
 # China
 DOMAIN-SUFFIX,CN
 DOMAIN-SUFFIX,cn
@@ -64,11 +77,13 @@ DOMAIN,sdk.open.extension.getui.com
 # tencent
 USER-AGENT,QQ*
 DOMAIN-SUFFIX,qq.com
+DOMAIN-SUFFIX,myqcloud.com
 DOMAIN-SUFFIX,dlied1.cdntips.net // 腾讯资源下载
 
 # baidu
 DOMAIN-KEYWORD,tieba
 DOMAIN-KEYWORD,baidu
+DOMAIN-SUFFIX,bdstatic.com
 
 # eleme
 DOMAIN-KEYWORD,ele.me
@@ -84,6 +99,28 @@ DOMAIN-KEYWORD,weibo
 # meituan
 DOMAIN-KEYWORD,sankuai
 DOMAIN-KEYWORD,meituan
+
+# bilibili
+DOMAIN-KEYWORD,bilibili
+
+# huya
+DOMAIN-KEYWORD,huya
+
+# migu
+DOMAIN-KEYWORD,migu
+
+# China Mobile
+DOMAIN-SUFFIX,139.com
+
+# CSDN / Douban
+DOMAIN-SUFFIX,csdn.net
+DOMAIN-SUFFIX,doubanio.com
+
+# ToDesk
+DOMAIN-SUFFIX,todesk.com
+
+# iCIBA
+DOMAIN-KEYWORD,iciba
 
 # amazone cn
 DOMAIN-KEYWORD,amazonaws.com.cn // s3.cn-north-1.amazonaws.com.cn amazone beijing
