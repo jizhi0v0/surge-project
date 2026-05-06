@@ -2,8 +2,11 @@
 DOMAIN,pnsfeedback.dingtalk.com
 DOMAIN,h-adashx.dingtalkapps.com
 DOMAIN-KEYWORD,h-adashx
+DOMAIN-SUFFIX,bytedns1.com
+DOMAIN-SUFFIX,bdurl.net
 DOMAIN,dualstack-logs.amap.com
 DOMAIN,loggw-ex.alipay.com
+DOMAIN-SUFFIX,hzshudian.com
 
 # taobao
 DOMAIN,adashbc.ut.taobao.com
@@ -40,6 +43,7 @@ DOMAIN-KEYWORD,googleadservices
 DOMAIN,adimg.uve.weibo.com
 
 # baidu
+DOMAIN,get.sogou.com
 DOMAIN,hm.baidu.com
 DOMAIN,hmma.baidu.com
 DOMAIN,afdconf.baidu.com
@@ -69,6 +73,7 @@ DOMAIN,ulogs.umengcloud.com
 
 # 字节跳动
 DOMAIN-KEYWORD,zijieapi
+DOMAIN,mcs.zijieapi.com
 
 # weibo
 # DOMAIN,h5.sinaimg.cn // weibo h5 mobile website, if u need access 'm.weibo.cn'
@@ -82,3 +87,8 @@ DOMAIN-SUFFIX,sdkapp.uve.weibo.com
 # Unknown
 # IP-CIDR,112.39.0.0/16,no-resolve // from tg, too broad for default reject
 # IP-CIDR,112.103.0.0/16,no-resolve // from tg, too broad for default reject
+
+# China app telemetry / update checks
+DOMAIN-SUFFIX,tingyun.com
+DOMAIN-KEYWORD,p2p.huya
+URL-REGEX,https://api.apipost.cn/v5.3.x/sys/checkUpdate
