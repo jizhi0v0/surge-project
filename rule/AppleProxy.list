@@ -1,5 +1,6 @@
 # Apple services that are intentionally routed through a proxy-select group.
 
+DOMAIN,apps.apple.com
 DOMAIN,identity.apple.com
 DOMAIN-SUFFIX,push.apple.com
 
