@@ -1,8 +1,10 @@
 #!name=ToDesk No Ads
-#!desc=Remove ToDesk banner ad config from config-center response.
+#!desc=Remove ToDesk macOS app home page banner ad config from config-center response.
 
 [Script]
+# Only rewrites the ToDesk config-center sync response. It does not block ToDesk CDN or other ToDesk APIs.
 ToDesk Config No Ads = type=http-response,pattern=^https:\/\/st\.todesk\.com\/config-center\/sync-config\?,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/jizhi0v0/surge-project/main/script/todesk-config-no-ads.js
 
 [MITM]
+# Required for the response-body script above.
 hostname = %APPEND% st.todesk.com

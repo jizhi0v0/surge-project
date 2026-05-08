@@ -1,3 +1,5 @@
+// Remove ToDesk macOS app home page banner ad entries from the remote config.
+// Keep the rest of the config-center payload intact to avoid changing app behavior.
 const adConfigKeys = new Set(["advsDataBanner1", "advsDataBanner2"]);
 
 try {
