@@ -1,0 +1,8 @@
+#!name=ToDesk No Ads
+#!desc=Remove ToDesk banner ad config from config-center response.
+
+[Script]
+ToDesk Config No Ads = type=http-response,pattern=^https:\/\/st\.todesk\.com\/config-center\/sync-config\?,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/jizhi0v0/surge-project/main/script/todesk-config-no-ads.js
+
+[MITM]
+hostname = %APPEND% st.todesk.com

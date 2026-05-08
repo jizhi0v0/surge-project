@@ -34,6 +34,7 @@ DOMAIN-SUFFIX,clearbit.com
 DOMAIN-SUFFIX,abtasty.com
 DOMAIN-SUFFIX,onetrust.com
 DOMAIN-SUFFIX,cookielaw.org
+DOMAIN,todesk-log-upload.todesk.com
 
 # google ad
 DOMAIN-KEYWORD,adservice.google.com
