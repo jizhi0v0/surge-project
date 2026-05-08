@@ -1,5 +1,5 @@
 #!name=ToDesk No Ads
-#!desc=Remove ToDesk macOS app home page banner ad config from config-center response.
+#!desc=Remove ToDesk macOS app home page banner, promo entries, and transfer upsell config.
 
 [Script]
 # Only rewrites the ToDesk config-center sync response. It does not block ToDesk CDN or other ToDesk APIs.
