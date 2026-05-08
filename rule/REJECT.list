@@ -35,13 +35,13 @@ DOMAIN-SUFFIX,abtasty.com
 DOMAIN-SUFFIX,onetrust.com
 DOMAIN-SUFFIX,cookielaw.org
 DOMAIN,todesk-log-upload.todesk.com
-DOMAIN-SUFFIX,split.io
-DOMAIN-SUFFIX,exp-tas.com
-DOMAIN-SUFFIX,launchdarkly.com
-DOMAIN,firebaselogging-pa.googleapis.com
-DOMAIN-SUFFIX,adtrafficquality.google
-DOMAIN-SUFFIX,report-uri.com
-DOMAIN-SUFFIX,awstrack.me
+DOMAIN-SUFFIX,split.io // feature flag / A-B testing; may make Termius use default flags
+DOMAIN-SUFFIX,exp-tas.com // Microsoft experimentation / telemetry, observed from VS Code
+DOMAIN-SUFFIX,launchdarkly.com // feature flag / remote config; may make apps use cached/default flags
+DOMAIN,firebaselogging-pa.googleapis.com // Firebase logging, observed from Spark
+DOMAIN-SUFFIX,adtrafficquality.google // Google ads traffic quality / invalid-ad-activity checks
+DOMAIN-SUFFIX,report-uri.com // CSP / browser security report collection
+DOMAIN-SUFFIX,awstrack.me // AWS SES email open/click tracking
 
 # google ad
 DOMAIN-KEYWORD,adservice.google.com
