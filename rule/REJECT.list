@@ -35,6 +35,13 @@ DOMAIN-SUFFIX,abtasty.com
 DOMAIN-SUFFIX,onetrust.com
 DOMAIN-SUFFIX,cookielaw.org
 DOMAIN,todesk-log-upload.todesk.com
+DOMAIN-SUFFIX,split.io
+DOMAIN-SUFFIX,exp-tas.com
+DOMAIN-SUFFIX,launchdarkly.com
+DOMAIN,firebaselogging-pa.googleapis.com
+DOMAIN-SUFFIX,adtrafficquality.google
+DOMAIN-SUFFIX,report-uri.com
+DOMAIN-SUFFIX,awstrack.me
 
 # google ad
 DOMAIN-KEYWORD,adservice.google.com
