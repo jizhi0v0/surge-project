@@ -32,8 +32,8 @@ DOMAIN-SUFFIX,qualified.com
 DOMAIN-SUFFIX,6sense.com
 DOMAIN-SUFFIX,clearbit.com
 DOMAIN-SUFFIX,abtasty.com
-DOMAIN-SUFFIX,onetrust.com
-DOMAIN-SUFFIX,cookielaw.org
+DOMAIN-SUFFIX,onetrust.com // consent platform; may affect cookie/privacy dialogs
+DOMAIN-SUFFIX,cookielaw.org // OneTrust consent CDN; may affect cookie/privacy dialogs
 DOMAIN,todesk-log-upload.todesk.com
 DOMAIN-SUFFIX,split.io // feature flag / A-B testing; may make Termius use default flags
 DOMAIN-SUFFIX,exp-tas.com // Microsoft experimentation / telemetry, observed from VS Code
@@ -42,6 +42,7 @@ DOMAIN,firebaselogging-pa.googleapis.com // Firebase logging, observed from Spar
 DOMAIN-SUFFIX,adtrafficquality.google // Google ads traffic quality / invalid-ad-activity checks
 DOMAIN-SUFFIX,report-uri.com // CSP / browser security report collection
 DOMAIN-SUFFIX,awstrack.me // AWS SES email open/click tracking
+DOMAIN,o120089.ingest.us.sentry.io // OrbStack Sentry telemetry
 
 # google ad
 DOMAIN-KEYWORD,adservice.google.com
@@ -63,8 +64,8 @@ DOMAIN,adsmind.ugdtimg.com
 
 
 # HuaWei cloud
-DOMAIN-KEYWORD,124.70.87.
-DOMAIN-KEYWORD,122.9.126.
+DOMAIN-KEYWORD,124.70.87. // suspicious: DOMAIN-KEYWORD does not reliably block raw IP traffic
+DOMAIN-KEYWORD,122.9.126. // suspicious: DOMAIN-KEYWORD does not reliably block raw IP traffic
 
 # alibaba
 # DOMAIN-KEYWORD,alibabachengdun.com // Alibaba risk-control, may affect login/payment checks
@@ -99,4 +100,4 @@ DOMAIN-SUFFIX,sdkapp.uve.weibo.com
 # China app telemetry / update checks
 DOMAIN-SUFFIX,tingyun.com
 DOMAIN-KEYWORD,p2p.huya
-URL-REGEX,https://api.apipost.cn/v5.3.x/sys/checkUpdate
+URL-REGEX,https://api\.apipost\.cn/v5\.3\.x/sys/checkUpdate
