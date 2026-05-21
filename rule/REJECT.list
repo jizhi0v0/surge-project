@@ -35,6 +35,7 @@ DOMAIN-SUFFIX,abtasty.com
 DOMAIN-SUFFIX,onetrust.com // consent platform; may affect cookie/privacy dialogs
 DOMAIN-SUFFIX,cookielaw.org // OneTrust consent CDN; may affect cookie/privacy dialogs
 DOMAIN,todesk-log-upload.todesk.com
+DOMAIN,todeskcdnspeed.todesk.com
 DOMAIN-SUFFIX,split.io // feature flag / A-B testing; may make Termius use default flags
 DOMAIN-SUFFIX,exp-tas.com // Microsoft experimentation / telemetry, observed from VS Code
 DOMAIN-SUFFIX,launchdarkly.com // feature flag / remote config; may make apps use cached/default flags
