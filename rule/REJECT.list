@@ -100,5 +100,4 @@ DOMAIN-SUFFIX,sdkapp.uve.weibo.com
 
 # China app telemetry / update checks
 DOMAIN-SUFFIX,tingyun.com
-DOMAIN-KEYWORD,p2p.huya
 URL-REGEX,https://api\.apipost\.cn/v5\.3\.x/sys/checkUpdate
