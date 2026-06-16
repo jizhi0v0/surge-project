@@ -1,6 +1,7 @@
 # Generative AI services
 # Sources cross-checked with HotKids GenAI, Sukka ai.conf, blackmatrix7 AI provider lists,
-# and vendor documentation where available. Apple Intelligence stays in Apple rules.
+# and vendor documentation where available.
+# Apple Intelligence / Private Cloud Compute is split into AppleProxy.list.
 
 # OpenAI / ChatGPT / Sora
 DOMAIN-SUFFIX,openai.com

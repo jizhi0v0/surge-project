@@ -3,10 +3,6 @@ USER-AGENT,MicroMessenger Client
 # USER-AGENT,WeChat*
 USER-AGENT,MApi* // Dianping
 
-# Apple
-DOMAIN-KEYWORD,smp-device // Apple add card service
-DOMAIN,cn-smp-paymentservices.apple.com // apple-pay china
-
 # wechat
 DOMAIN,dns.weixin.qq.com
 DOMAIN,snsvideo.c2c.wechat.com

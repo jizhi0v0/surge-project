@@ -1,8 +1,24 @@
 # Apple services that are intentionally routed through a proxy-select group.
+# Keep this rule-set above Apple.list because Apple.list has broad apple.com coverage.
 
+# App Store / TestFlight / Apple Account
 DOMAIN,apps.apple.com
+DOMAIN-SUFFIX,apps.apple.com
+DOMAIN-SUFFIX,itunes.apple.com
+DOMAIN,iosapps.itunes.apple.com
+DOMAIN,osxapps.itunes.apple.com
+DOMAIN,testflight.apple.com
+DOMAIN,beta.apple.com
 DOMAIN,identity.apple.com
 DOMAIN-SUFFIX,push.apple.com
+
+# Apple Intelligence / Siri / Private Cloud Compute
+DOMAIN,guzzoni.apple.com
+DOMAIN-SUFFIX,smoot.apple.com
+DOMAIN,apple-relay.apple.com
+DOMAIN,apple-relay.cloudflare.com
+DOMAIN,apple-relay.fastly-edge.com
+DOMAIN,cp4.cloudflare.com
 
 # Apple push / identity observed proxy IP ranges
 IP-CIDR,17.188.128.0/18,no-resolve

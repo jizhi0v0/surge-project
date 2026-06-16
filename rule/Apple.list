@@ -1,16 +1,46 @@
-DOMAIN,apps.apple.com
+# Apple platform services routed via the Apple group.
+# App Store, TestFlight, and Apple Intelligence exceptions live in AppleProxy.list.
+
+# iCloud / CloudKit
+DOMAIN-SUFFIX,apple-cloudkit.com
+DOMAIN-SUFFIX,apple-livephotoskit.com
+DOMAIN-SUFFIX,apzones.com
 DOMAIN-SUFFIX,cdn-apple.com
-DOMAIN-SUFFIX,mzstatic.com // App Store & iTunes Images
+DOMAIN-SUFFIX,gc.apple.com
+DOMAIN-SUFFIX,icloud.com
+DOMAIN-SUFFIX,icloud.com.cn
+DOMAIN-SUFFIX,icloud.apple.com
+DOMAIN-SUFFIX,icloud-content.com
+DOMAIN-SUFFIX,iwork.apple.com
+DOMAIN-SUFFIX,me.com
+DOMAIN,gateway.icloud.com
+DOMAIN,mask.icloud.com
+DOMAIN,mask-h2.icloud.com
+DOMAIN,mask-api.icloud.com
+DOMAIN,probe.icloud.com
+DOMAIN,pong.icloud.com
+DOMAIN,metrics.icloud.com
+DOMAIN,apple-native-relay.apple.com
+DOMAIN,www-mail.icloud-sandbox.com // iCloud Mail website
+
+# Apple Pay / Wallet
+DOMAIN-KEYWORD,smp-device // Apple add card service
+DOMAIN,cn-smp-paymentservices.apple.com // Apple Pay China
+
+# Core Apple services
 DOMAIN-SUFFIX,aaplimg.com
 DOMAIN-SUFFIX,apple.co
 DOMAIN-SUFFIX,apple.com
-DOMAIN-SUFFIX,icloud-content.com
-DOMAIN-SUFFIX,icloud.com
+DOMAIN-SUFFIX,apple-dns.net
 DOMAIN-SUFFIX,itunes.com
-DOMAIN-SUFFIX,itunes.apple.com
 DOMAIN-SUFFIX,lookup-api.apple.com // Dictionary
-DOMAIN-SUFFIX,me.com
-DOMAIN,www-mail.icloud-sandbox.com // icloud mail websit
+DOMAIN-SUFFIX,ls.apple.com // Apple Maps
+DOMAIN-SUFFIX,mzstatic.com // App Store & iTunes images/assets
+DOMAIN-SUFFIX,store.apple.com // Apple Store Online
+DOMAIN-SUFFIX,updates.cdn-apple.com // Software update downloads
 PROCESS-NAME,storedownloadd // Mac App Store
 USER-AGENT,com.apple.appstored* // iOS App Store
 DOMAIN,17.57.145.170
+
+# Local Apple-routed app exceptions
+DOMAIN,app-beta.smartmailcloud.com
