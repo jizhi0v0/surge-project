@@ -4,6 +4,9 @@ const DEFAULTS = {
   API_HOST: "",
   API_KEY: "",
   BEARER_TOKEN: "",
+  KEY_ID: "",
+  PROJECT_ID: "",
+  PRIVATE_KEY_BASE64: "",
   LOCATION: "",
   COORDINATE: "",
   CITY_NAME: "Local",
@@ -18,12 +21,16 @@ const DEFAULTS = {
   WARNING_ENABLED: "true",
   COOLDOWN_MINUTES: "120",
   DRY_RESET_MINUTES: "90",
+  TOKEN_TTL_MINUTES: "60",
 };
 
 const PLACEHOLDER_VALUES = new Set([
   "your_api_host.qweatherapi.com",
   "your_api_key",
   "your_bearer_token",
+  "your_key_id",
+  "your_project_id",
+  "your_private_key_base64",
   "your_location",
   "optional",
 ]);
@@ -50,7 +57,7 @@ function parseArguments(raw) {
 
 function decodeValue(value) {
   try {
-    return decodeURIComponent(String(value).replace(/\+/g, "%20"));
+    return decodeURIComponent(String(value));
   } catch {
     return String(value);
   }
@@ -171,6 +178,9 @@ function buildConfig() {
     apiHost: normalizeHost(cleanArgValue(arg(args, "API_HOST"))),
     apiKey: cleanArgValue(arg(args, "API_KEY")),
     bearerToken: cleanArgValue(arg(args, "BEARER_TOKEN")),
+    keyId: cleanArgValue(arg(args, "KEY_ID")),
+    projectId: cleanArgValue(arg(args, "PROJECT_ID")),
+    privateKeyBase64: cleanArgValue(arg(args, "PRIVATE_KEY_BASE64")),
     location,
     coordinate,
     cityName: arg(args, "CITY_NAME") || "Local",
@@ -185,7 +195,12 @@ function buildConfig() {
     warningEnabled: toBool(arg(args, "WARNING_ENABLED"), true),
     cooldownMinutes: toInt(arg(args, "COOLDOWN_MINUTES"), 120, 15, 1440),
     dryResetMinutes: toInt(arg(args, "DRY_RESET_MINUTES"), 90, 15, 1440),
+    tokenTtlMinutes: toInt(arg(args, "TOKEN_TTL_MINUTES"), 60, 5, 1440),
   };
+}
+
+function hasJwtConfig(config) {
+  return Boolean(config.keyId && config.projectId && config.privateKeyBase64);
 }
 
 function validateConfig(config) {
@@ -195,8 +210,8 @@ function validateConfig(config) {
     missing.push("API_HOST");
   }
 
-  if (!config.apiKey && !config.bearerToken) {
-    missing.push("API_KEY or BEARER_TOKEN");
+  if (!config.apiKey && !config.bearerToken && !hasJwtConfig(config)) {
+    missing.push("JWT credential, BEARER_TOKEN, or API_KEY");
   }
 
   if (!config.location) {
@@ -204,6 +219,142 @@ function validateConfig(config) {
   }
 
   return missing;
+}
+
+async function resolveAuthHeaders(config) {
+  if (config.bearerToken) {
+    return { Authorization: `Bearer ${config.bearerToken}` };
+  }
+
+  if (hasJwtConfig(config)) {
+    return { Authorization: `Bearer ${await generateQWeatherJwt(config)}` };
+  }
+
+  return { "X-QW-Api-Key": config.apiKey };
+}
+
+async function generateQWeatherJwt(config) {
+  if (!globalThis.crypto?.subtle) {
+    throw new Error("WebCrypto is unavailable. Use engine=webview and Surge iOS 5.9+/Mac 5.5+.");
+  }
+
+  const now = Math.floor(Date.now() / 1000);
+  const iat = now - 30;
+  const exp = iat + config.tokenTtlMinutes * 60;
+  const header = {
+    alg: "EdDSA",
+    kid: config.keyId,
+  };
+  const payload = {
+    sub: config.projectId,
+    iat,
+    exp,
+  };
+  const signingInput = `${base64UrlEncodeString(JSON.stringify(header))}.${base64UrlEncodeString(
+    JSON.stringify(payload)
+  )}`;
+  const privateKey = await importEd25519PrivateKey(config.privateKeyBase64);
+  const signature = await crypto.subtle.sign("Ed25519", privateKey, utf8Bytes(signingInput));
+
+  return `${signingInput}.${base64UrlEncodeBytes(new Uint8Array(signature))}`;
+}
+
+async function importEd25519PrivateKey(privateKeyBase64) {
+  const pkcs8Bytes = extractPkcs8Bytes(privateKeyBase64);
+
+  try {
+    return await crypto.subtle.importKey("pkcs8", pkcs8Bytes, { name: "Ed25519" }, false, ["sign"]);
+  } catch (error) {
+    throw new Error(`Failed to import Ed25519 private key: ${error?.message || error}`);
+  }
+}
+
+function extractPkcs8Bytes(value) {
+  const input = String(value || "").replace(/\\n/g, "\n").trim();
+
+  if (/BEGIN PRIVATE KEY/.test(input)) {
+    return pemToDerBytes(input);
+  }
+
+  const bytes = base64ToBytes(input);
+  const decodedText = bytesToUtf8(bytes);
+
+  if (/BEGIN PRIVATE KEY/.test(decodedText)) {
+    return pemToDerBytes(decodedText);
+  }
+
+  return bytes;
+}
+
+function pemToDerBytes(pem) {
+  const base64 = pem
+    .replace(/-----BEGIN PRIVATE KEY-----/g, "")
+    .replace(/-----END PRIVATE KEY-----/g, "")
+    .replace(/\s+/g, "");
+
+  return base64ToBytes(base64);
+}
+
+function base64ToBytes(value) {
+  const normalized = String(value || "")
+    .replace(/\s+/g, "")
+    .replace(/-/g, "+")
+    .replace(/_/g, "/");
+  const padded = normalized.padEnd(Math.ceil(normalized.length / 4) * 4, "=");
+  const binary = atob(padded);
+  const bytes = new Uint8Array(binary.length);
+
+  for (let index = 0; index < binary.length; index += 1) {
+    bytes[index] = binary.charCodeAt(index);
+  }
+
+  return bytes;
+}
+
+function base64UrlEncodeString(value) {
+  return base64UrlEncodeBytes(utf8Bytes(value));
+}
+
+function base64UrlEncodeBytes(bytes) {
+  let binary = "";
+
+  for (let index = 0; index < bytes.length; index += 1) {
+    binary += String.fromCharCode(bytes[index]);
+  }
+
+  return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
+}
+
+function utf8Bytes(value) {
+  if (typeof TextEncoder !== "undefined") {
+    return new TextEncoder().encode(value);
+  }
+
+  const encoded = unescape(encodeURIComponent(value));
+  const bytes = new Uint8Array(encoded.length);
+
+  for (let index = 0; index < encoded.length; index += 1) {
+    bytes[index] = encoded.charCodeAt(index);
+  }
+
+  return bytes;
+}
+
+function bytesToUtf8(bytes) {
+  try {
+    if (typeof TextDecoder !== "undefined") {
+      return new TextDecoder().decode(bytes);
+    }
+
+    let binary = "";
+    bytes.forEach((byte) => {
+      binary += String.fromCharCode(byte);
+    });
+
+    return decodeURIComponent(escape(binary));
+  } catch {
+    return "";
+  }
 }
 
 function queryString(params) {
@@ -218,13 +369,8 @@ function requestJson(config, path, params) {
   const url = `https://${config.apiHost}${path}${query ? `?${query}` : ""}`;
   const headers = {
     Accept: "application/json",
+    ...config.authHeaders,
   };
-
-  if (config.bearerToken) {
-    headers.Authorization = `Bearer ${config.bearerToken}`;
-  } else {
-    headers["X-QW-Api-Key"] = config.apiKey;
-  }
 
   return new Promise((resolve) => {
     $httpClient.get(
@@ -617,6 +763,8 @@ function finish(state) {
       finish(state);
       return;
     }
+
+    config.authHeaders = await resolveAuthHeaders(config);
 
     const results = await Promise.all(qweatherRequests(config));
     const errors = results.filter((result) => !result.ok);
