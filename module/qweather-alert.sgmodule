@@ -1,6 +1,5 @@
 #!name=QWeather Weather Alert
-#!desc=Call QWeather on a schedule and notify via Surge/macOS when rain or official weather alerts are detected.
-#!system=mac
+#!desc=Call QWeather on a schedule and notify via Surge when rain or official weather alerts are detected.
 #!arguments=API_HOST:your_api_host.qweatherapi.com,API_KEY:your_api_key,BEARER_TOKEN:optional,LOCATION:your_location,COORDINATE:optional,CITY_NAME:Local,LANG:zh,UNIT:m,LOOKAHEAD_HOURS:6,RAIN_POP_THRESHOLD:50,RAIN_PRECIP_THRESHOLD:0.1,MINUTELY_ENABLED:true,MINUTELY_LOOKAHEAD_MINUTES:120,MINUTELY_PRECIP_THRESHOLD:0.01,WARNING_ENABLED:true,COOLDOWN_MINUTES:120,DRY_RESET_MINUTES:90
 #!arguments-desc=API_HOST: Your dedicated QWeather API host, e.g. abc123.qweatherapi.com.\nAPI_KEY: QWeather API key. If BEARER_TOKEN is set, Bearer auth is used instead.\nLOCATION: LocationID or lon,lat for hourly forecast.\nCOORDINATE: lon,lat for minutely forecast and official alerts.\nRAIN_POP_THRESHOLD: hourly precipitation probability threshold.\nCOOLDOWN_MINUTES: minimum interval before repeating a rain notification.
 
