@@ -20,6 +20,14 @@ const DEFAULTS = {
   DRY_RESET_MINUTES: "90",
 };
 
+const PLACEHOLDER_VALUES = new Set([
+  "your_api_host.qweatherapi.com",
+  "your_api_key",
+  "your_bearer_token",
+  "your_location",
+  "optional",
+]);
+
 function parseArguments(raw) {
   const args = {};
   if (!raw) {
@@ -50,6 +58,16 @@ function decodeValue(value) {
 
 function arg(args, name) {
   return args[name] || DEFAULTS[name] || "";
+}
+
+function cleanArgValue(value) {
+  const trimmed = String(value || "").trim();
+
+  if (!trimmed || PLACEHOLDER_VALUES.has(trimmed.toLowerCase())) {
+    return "";
+  }
+
+  return trimmed;
 }
 
 function toBool(value, fallback) {
@@ -141,13 +159,13 @@ function writeState(state) {
 
 function buildConfig() {
   const args = parseArguments(typeof $argument === "string" ? $argument : "");
-  const coordinate = normalizeCoordinate(arg(args, "COORDINATE"));
-  const location = arg(args, "LOCATION") || coordinate;
+  const coordinate = normalizeCoordinate(cleanArgValue(arg(args, "COORDINATE")));
+  const location = cleanArgValue(arg(args, "LOCATION")) || coordinate;
 
   return {
-    apiHost: normalizeHost(arg(args, "API_HOST")),
-    apiKey: arg(args, "API_KEY"),
-    bearerToken: arg(args, "BEARER_TOKEN"),
+    apiHost: normalizeHost(cleanArgValue(arg(args, "API_HOST"))),
+    apiKey: cleanArgValue(arg(args, "API_KEY")),
+    bearerToken: cleanArgValue(arg(args, "BEARER_TOKEN")),
     location,
     coordinate,
     cityName: arg(args, "CITY_NAME") || "Local",
