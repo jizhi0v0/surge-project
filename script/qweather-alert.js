@@ -63,7 +63,12 @@ function arg(args, name) {
 function cleanArgValue(value) {
   const trimmed = String(value || "").trim();
 
-  if (!trimmed || PLACEHOLDER_VALUES.has(trimmed.toLowerCase())) {
+  if (
+    !trimmed ||
+    PLACEHOLDER_VALUES.has(trimmed.toLowerCase()) ||
+    /^\{\{\{[A-Z0-9_]+\}\}\}$/.test(trimmed) ||
+    /^%[A-Z0-9_]+%$/.test(trimmed)
+  ) {
     return "";
   }
 
