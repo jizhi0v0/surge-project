@@ -621,10 +621,11 @@ function getResult(results, kind) {
   return results.find((result) => result.kind === kind && result.ok)?.data;
 }
 
-function notify(title, subtitle, body, url) {
+function notify(title, subtitle, body, url, extraOptions) {
   const options = {
     sound: true,
     "auto-dismiss": false,
+    ...(extraOptions || {}),
   };
 
   if (url) {
@@ -684,17 +685,27 @@ function minutesAway(timestamp) {
   const minutes = Math.max(0, Math.round((timestamp - Date.now()) / 60000));
 
   if (minutes === 0) {
-    return "now";
+    return "现在";
   }
 
-  return `in about ${minutes} min`;
+  if (minutes < 60) {
+    return `约 ${minutes} 分钟后`;
+  }
+
+  const hours = Math.floor(minutes / 60);
+  const rest = minutes % 60;
+
+  return rest ? `约 ${hours} 小时 ${rest} 分钟后` : `约 ${hours} 小时后`;
 }
 
 function summarizeHourly(entry) {
-  const pieces = [formatTime(parseFxTime(entry.fxTime)), entry.text || "weather change"];
+  const pieces = [
+    formatTime(parseFxTime(entry.fxTime)),
+    `${weatherIcon(entry.text, entry.icon)} ${entry.text || "天气变化"}`,
+  ];
 
   if (entry.pop !== undefined && entry.pop !== "") {
-    pieces.push(`POP ${entry.pop}%`);
+    pieces.push(`降水 ${entry.pop}%`);
   }
 
   if (entry.precip !== undefined && entry.precip !== "") {
@@ -702,6 +713,29 @@ function summarizeHourly(entry) {
   }
 
   return pieces.join(" ");
+}
+
+function weatherIcon(text, iconCode) {
+  const value = `${iconCode || ""} ${text || ""}`;
+
+  if (/(雷|thunder|storm)/i.test(value)) return "⛈️";
+  if (/(雨|rain|shower|drizzle)/i.test(value)) return "☔";
+  if (/(雪|snow|sleet|冻雨)/i.test(value)) return "❄️";
+  if (/(雾|霾|fog|haze|mist|dust|sand)/i.test(value)) return "🌫️";
+  if (/(阴|cloud|overcast)/i.test(value)) return "☁️";
+  if (/(晴|sun|clear)/i.test(value)) return "☀️";
+
+  return "🌦️";
+}
+
+function qweatherIconMedia(iconCode) {
+  if (!iconCode) {
+    return {};
+  }
+
+  return {
+    "media-url": `https://icons.qweather.com/assets/icons/${encodeURIComponent(iconCode)}.svg`,
+  };
 }
 
 function findMinutelyRain(minutely, config) {
@@ -727,18 +761,18 @@ function findMinutelyRain(minutely, config) {
 
   const first = matches[0];
   const peak = matches.reduce((max, entry) => (entry.precipValue > max.precipValue ? entry : max), first);
-  const summary = minutely.summary || "Minute-level precipitation is expected.";
+  const summary = minutely.summary || "分钟级预报显示将有降水。";
 
   return {
     source: "minutely",
-    title: "Weather Change Alert",
-    subtitle: `${config.cityName}: precipitation ${minutesAway(first.timestamp)}`,
+    title: `☔ ${config.cityName} 即将降水`,
+    subtitle: `${minutesAway(first.timestamp)} · ${formatTime(first.timestamp)}`,
     body: [
       summary,
-      `Start: ${formatTime(first.timestamp)}; peak 5-min precip: ${peak.precip || "0"}mm.`,
-      "Source: QWeather minutely forecast.",
+      `峰值 ${formatTime(peak.timestamp)} · ${peak.precip || "0"}mm/5分钟`,
     ].join("\n"),
     url: minutely.fxLink,
+    options: { "media-url": "https://icons.qweather.com/assets/icons/307.svg" },
   };
 }
 
@@ -768,17 +802,18 @@ function findHourlyRain(hourly, config) {
 
   const first = matches[0];
   const preview = matches.slice(0, 3).map(summarizeHourly).join("\n");
+  const icon = weatherIcon(first.text, first.icon);
 
   return {
     source: "hourly",
-    title: "Weather Change Alert",
-    subtitle: `${config.cityName}: precipitation ${minutesAway(first.timestamp)}`,
+    title: `${icon} ${config.cityName} 天气变化`,
+    subtitle: `${minutesAway(first.timestamp)} · ${formatTime(first.timestamp)}`,
     body: [
-      `${first.text || "Precipitation"} expected at ${formatTime(first.timestamp)}.`,
+      `${first.text || "可能降水"} · 降水 ${first.pop || "--"}% · ${first.precip || "0"}mm`,
       preview,
-      "Source: QWeather hourly forecast.",
     ].join("\n"),
     url: hourly.fxLink,
+    options: qweatherIconMedia(first.icon),
   };
 }
 
@@ -795,7 +830,7 @@ function handleRainEvent(state, event, config) {
     rain.lastSource = event.source;
 
     if (shouldNotify) {
-      notify(event.title, event.subtitle, event.body, event.url);
+      notify(event.title, event.subtitle, event.body, event.url, event.options);
       rain.lastNotifyAt = now;
     }
   } else if (rain.active) {
@@ -854,17 +889,18 @@ function handleWarnings(state, warning, config) {
   if (newAlerts.length) {
     const first = newAlerts[0];
     const more = newAlerts.length > 1 ? ` (+${newAlerts.length - 1} more)` : "";
-    const headline = first.headline || first.eventType?.name || "Official weather alert";
+    const headline = first.headline || first.eventType?.name || "官方天气预警";
     const details = [
-      `Severity: ${first.severity || "unknown"}; certainty: ${first.certainty || "unknown"}.`,
-      truncate(first.description || first.instruction || "See QWeather for details.", 220),
+      `级别 ${first.severity || "unknown"} · 可信度 ${first.certainty || "unknown"}`,
+      truncate(first.description || first.instruction || "打开 QWeather 查看详情。", 220),
     ];
 
     notify(
-      "QWeather Official Alert",
-      `${config.cityName}: ${headline}${more}`,
+      `⚠️ ${config.cityName} 官方预警`,
+      `${headline}${more}`,
       details.join("\n"),
-      warning.fxLink
+      warning.fxLink,
+      { "media-url": "https://icons.qweather.com/assets/icons/999.svg" }
     );
   }
 
