@@ -10,6 +10,8 @@ const DEFAULTS = {
   LOCATION: "",
   COORDINATE: "",
   CITY_NAME: "Local",
+  GEO_ADM: "",
+  GEO_RANGE: "",
   LANG: "zh",
   UNIT: "m",
   LOOKAHEAD_HOURS: "6",
@@ -32,6 +34,8 @@ const PLACEHOLDER_VALUES = new Set([
   "your_project_id",
   "your_private_key_base64",
   "your_location",
+  "your_geo_adm",
+  "your_geo_range",
   "optional",
 ]);
 
@@ -173,6 +177,7 @@ function buildConfig() {
   const args = parseArguments(typeof $argument === "string" ? $argument : "");
   const coordinate = normalizeCoordinate(cleanArgValue(arg(args, "COORDINATE")));
   const location = cleanArgValue(arg(args, "LOCATION")) || coordinate;
+  const cityName = cleanArgValue(arg(args, "CITY_NAME"));
 
   return {
     apiHost: normalizeHost(cleanArgValue(arg(args, "API_HOST"))),
@@ -183,7 +188,9 @@ function buildConfig() {
     privateKeyBase64: cleanArgValue(arg(args, "PRIVATE_KEY_BASE64")),
     location,
     coordinate,
-    cityName: arg(args, "CITY_NAME") || "Local",
+    cityName: cityName || "Local",
+    geoAdm: cleanArgValue(arg(args, "GEO_ADM")),
+    geoRange: cleanArgValue(arg(args, "GEO_RANGE")),
     lang: arg(args, "LANG") || "zh",
     unit: arg(args, "UNIT") || "m",
     lookaheadHours: toInt(arg(args, "LOOKAHEAD_HOURS"), 6, 1, 24),
@@ -203,7 +210,7 @@ function hasJwtConfig(config) {
   return Boolean(config.keyId && config.projectId && config.privateKeyBase64);
 }
 
-function validateConfig(config) {
+function validateConfigBasics(config) {
   const missing = [];
 
   if (!config.apiHost) {
@@ -214,8 +221,14 @@ function validateConfig(config) {
     missing.push("JWT credential, BEARER_TOKEN, or API_KEY");
   }
 
+  return missing;
+}
+
+function validateConfigLocation(config) {
+  const missing = [];
+
   if (!config.location) {
-    missing.push("LOCATION or COORDINATE");
+    missing.push("LOCATION, COORDINATE, or CITY_NAME");
   }
 
   return missing;
@@ -420,6 +433,96 @@ function requestJson(config, path, params) {
       }
     );
   });
+}
+
+function cityNameLookupValue(config) {
+  if (!config.cityName || config.cityName === DEFAULTS.CITY_NAME) {
+    return "";
+  }
+
+  return config.cityName;
+}
+
+function geoCacheKey(config, query) {
+  return [query, config.geoAdm, config.geoRange, config.lang].join("|");
+}
+
+function applyGeoLocation(config, location) {
+  if (!location) {
+    return false;
+  }
+
+  const coordinate = normalizeCoordinate(`${location.lon},${location.lat}`);
+
+  if (!coordinate) {
+    return false;
+  }
+
+  config.coordinate = coordinate;
+  config.location = location.id || coordinate;
+
+  if (!config.cityName || config.cityName === DEFAULTS.CITY_NAME) {
+    config.cityName = location.name || DEFAULTS.CITY_NAME;
+  }
+
+  return true;
+}
+
+async function resolveGeoConfig(config, state) {
+  if (config.coordinate) {
+    config.location = config.location || config.coordinate;
+    return { ok: true, source: "configured" };
+  }
+
+  const locationCoordinate = normalizeCoordinate(config.location);
+
+  if (locationCoordinate) {
+    config.coordinate = locationCoordinate;
+    config.location = config.location || locationCoordinate;
+    return { ok: true, source: "configured" };
+  }
+
+  const query = config.location || cityNameLookupValue(config);
+
+  if (!query) {
+    return { ok: true, source: "none" };
+  }
+
+  state.geoCache = state.geoCache || {};
+
+  const cacheKey = geoCacheKey(config, query);
+  const cached = state.geoCache[cacheKey];
+
+  if (cached?.location && Date.now() - (cached.updatedAt || 0) < 7 * 24 * 60 * 60 * 1000) {
+    if (applyGeoLocation(config, cached.location)) {
+      return { ok: true, source: "cache" };
+    }
+  }
+
+  const result = await requestJson(config, "/geo/v2/city/lookup", {
+    location: query,
+    adm: config.geoAdm,
+    range: config.geoRange,
+    number: "1",
+    lang: config.lang,
+  });
+
+  if (!result.ok) {
+    return { ok: false, source: "geo", error: result.error };
+  }
+
+  const location = Array.isArray(result.data?.location) ? result.data.location[0] : null;
+
+  if (!applyGeoLocation(config, location)) {
+    return { ok: false, source: "geo", error: `No GeoAPI match for ${query}` };
+  }
+
+  state.geoCache[cacheKey] = {
+    updatedAt: Date.now(),
+    location,
+  };
+
+  return { ok: true, source: "geo" };
 }
 
 function isNoDataResponse(json) {
@@ -750,7 +853,7 @@ function finish(state) {
 
   try {
     const config = buildConfig();
-    const missing = validateConfig(config);
+    const missing = validateConfigBasics(config);
 
     if (missing.length) {
       notifyOperationalIssue(
@@ -765,6 +868,32 @@ function finish(state) {
     }
 
     config.authHeaders = await resolveAuthHeaders(config);
+
+    const geoResult = await resolveGeoConfig(config, state);
+
+    if (!geoResult.ok) {
+      notifyOperationalIssue(
+        state,
+        "geo-error",
+        "QWeather Alert Geo Lookup Error",
+        geoResult.error,
+        360
+      );
+    }
+
+    const missingLocation = validateConfigLocation(config);
+
+    if (missingLocation.length) {
+      notifyOperationalIssue(
+        state,
+        "config",
+        "QWeather Alert Setup Required",
+        `Missing module argument: ${missingLocation.join(", ")}.`,
+        720
+      );
+      finish(state);
+      return;
+    }
 
     const results = await Promise.all(qweatherRequests(config));
     const errors = results.filter((result) => !result.ok);
