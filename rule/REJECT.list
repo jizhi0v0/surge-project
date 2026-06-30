@@ -80,10 +80,6 @@ DOMAIN,app-analytics-services.com
 DOMAIN,ulogs.umeng.com
 DOMAIN,ulogs.umengcloud.com
 
-# 字节跳动
-DOMAIN-KEYWORD,zijieapi
-DOMAIN,mcs.zijieapi.com
-
 # weibo
 # DOMAIN,h5.sinaimg.cn // weibo h5 mobile website, if u need access 'm.weibo.cn'
 # DOMAIN,dp.im.weibo.cn // Weibo IM gateway
