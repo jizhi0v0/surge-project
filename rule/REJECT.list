@@ -89,6 +89,10 @@ DOMAIN-SUFFIX,biz.weibo.com
 DOMAIN-SUFFIX,sdkapp.uve.weibo.com
 # DOMAIN-SUFFIX,ip.taobao.com // IP geolocation service, may affect location features
 
+# Telegram
+# Telegram macOS may submit invalid DC candidates in 0.0.0.0/8; this IANA special-use block is not globally routable.
+IP-CIDR,0.0.0.0/8,no-resolve
+
 # Unknown
 # IP-CIDR,112.39.0.0/16,no-resolve // from tg, too broad for default reject
 # IP-CIDR,112.103.0.0/16,no-resolve // from tg, too broad for default reject
