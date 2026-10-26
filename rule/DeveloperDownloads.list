@@ -62,3 +62,57 @@ DOMAIN,pkg.helium.computer
 DOMAIN,formulae.brew.sh
 DOMAIN,edgedl.me.gvt1.com
 DOMAIN,dl.google.com
+
+# Additional public installers verified from official app update feeds.
+# Exact hosts only; account/API domains and downloads.claude.ai stay excluded.
+
+# PDF Expert
+DOMAIN,downloads.pdfexpert.com
+
+# Rex Beta (final public blob host; do not match all Vercel storage)
+DOMAIN,wthziax2yejsqc4k.public.blob.vercel-storage.com
+
+# Lorca
+DOMAIN,mac-releases.lorca.app
+
+# Vivaldi
+DOMAIN,downloads.vivaldi.com
+
+# Backdrop
+DOMAIN,cdn.cindori.com
+
+# Waku
+DOMAIN,releases.waku.sh
+
+# superwhisper
+DOMAIN,builds.superwhisper.com
+
+# Proxyman
+DOMAIN,assets.proxyman.com
+
+# TinyWeb
+DOMAIN,files.tinyweb.so
+
+# GotEmail
+DOMAIN,gotemail.net
+
+# Adguard
+DOMAIN,static.adtidy.org
+
+# Fork
+DOMAIN,cdn.fork.dev
+
+# iTerm
+DOMAIN,iterm2.com
+
+# IINA
+DOMAIN,dl.iina.io
+
+# CleanShot X
+DOMAIN,updates.getcleanshot.com
+
+# Surge
+DOMAIN,dl.nssurge.com
+
+# OBS
+DOMAIN,cdn-fastly.obsproject.com
