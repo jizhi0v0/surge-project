@@ -1,18 +1,64 @@
-# Developer tool downloads and static resources.
-# Keep Docker registry endpoints out for now; they are less reliable to direct-route in mainland China.
+# Public installer downloads, package repositories and update payloads.
+# Match distribution hosts instead of whole account or application domains.
+# Excludes downloads.claude.ai by explicit user preference.
+# GitHub: download hosts only; github.com keeps its existing policy.
+DOMAIN,release-assets.githubusercontent.com
+DOMAIN,objects.githubusercontent.com
+DOMAIN,codeload.github.com
+DOMAIN,raw.githubusercontent.com
 
-# VS Code / Microsoft developer assets
+# npm public registry (the same host can also serve authenticated private packages).
+DOMAIN,registry.npmjs.org
+
+# VS Code / Microsoft installer CDNs
 DOMAIN-SUFFIX,vsassets.io
 DOMAIN-SUFFIX,vscode-cdn.net
-DOMAIN-SUFFIX,visualstudio.com
-DOMAIN-SUFFIX,download.visualstudio.microsoft.com
+DOMAIN,download.visualstudio.microsoft.com
+DOMAIN,vscode.download.prss.microsoft.com
+DOMAIN,update.code.visualstudio.com
 
-# JetBrains downloads and package assets
+# JetBrains installers
 DOMAIN,download.jetbrains.com
-DOMAIN-SUFFIX,download.jetbrains.com
-DOMAIN-SUFFIX,download-cdn.jetbrains.com
+DOMAIN,download-cdn.jetbrains.com
+DOMAIN,download-cf.jetbrains.com
 
-# Postman downloads and static resources
-DOMAIN-SUFFIX,postman.com
-DOMAIN-SUFFIX,pstmn.io
-DOMAIN-SUFFIX,getpostman.com
+# Postman installers
+DOMAIN,dl.pstmn.io
+
+# VLC / Blender
+DOMAIN,download.videolan.org
+DOMAIN,downloads.videolan.org
+DOMAIN,get.videolan.org
+DOMAIN,download.blender.org
+
+# MySQL Community distribution CDN
+DOMAIN,cdn.mysql.com
+
+# TablePlus / Cursor / Amp public installers
+DOMAIN,files.tableplus.com
+DOMAIN,downloads.cursor.com
+DOMAIN,download.cursor.com
+DOMAIN,static.ampcode.com
+
+# Apple public software-update downloads
+DOMAIN,updates.cdn-apple.com
+DOMAIN,updates-http.cdn-apple.com
+
+# Public app releases verified without login
+DOMAIN,releases.chatwise.app
+DOMAIN,releases.r2.chatwise.app
+DOMAIN,releases.arc.net
+DOMAIN,releases.diabrowser.com
+DOMAIN,lf-cdn.trae.ai
+DOMAIN,lf-static.traecdn.us
+DOMAIN,desktop.docker.com
+DOMAIN,release.gitkraken.dev
+DOMAIN,release.gitkraken.com
+DOMAIN,download.scdn.co
+DOMAIN,persistent.oaistatic.com
+
+# Public package repositories and update payloads
+DOMAIN,pkg.helium.computer
+DOMAIN,formulae.brew.sh
+DOMAIN,edgedl.me.gvt1.com
+DOMAIN,dl.google.com
